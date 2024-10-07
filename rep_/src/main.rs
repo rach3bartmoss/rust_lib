@@ -8,9 +8,11 @@ fn read_file(file_name: &String) -> String {
 }
 
 fn count_word_in_file(readed_file: &String, target_word: &String) -> u32 {
-    let count: u32 = 0;
-    while readed_file.find(target_word) > 0 {
+    let mut count: u32 = 0;
+    let mut start = 0;
+    while let Some(pos) = readed_file[start..].find(target_word) {
         count += 1;
+        start += pos + target_word.len();
     }
     count
 }
